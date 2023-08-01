@@ -1,0 +1,17 @@
+{
+    "name": "aws_lambda_dynamodb_local",
+    "version": "1.0.0",
+    "description": "AWS Labmda DynamoDB Local",
+    "main": "app.js",
+    "repository": "https://github.com/daniel-bleoju/AWSLambdaDynamoDBlocal.git",
+    "author": "Daniel Bleoju",
+    "license": "MIT",
+    "dependencies": {
+    },
+    "scripts": {
+      "test": "mocha tests/unit/"
+    },
+    "devDependencies": {
+    }
+  }
+  

@@ -1,0 +1,89 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  AWSLambdaDynamoDBlocal
+  
+Globals:
+  Function:
+    Timeout: 60
+
+Resources:
+  GetItemsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: get/
+      Handler: app.lambdaHandler
+      Runtime: nodejs12.x
+      Events:
+        GetItem:
+          Type: Api
+          Properties:
+            Path: /items/
+            Method: get
+      Environment:
+        Variables:
+          USE_LOCAL_DYNAMODB: true
+
+  GetItemFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: item/
+      Handler: app.lambdaHandler
+      Runtime: nodejs12.x
+      Events:
+        GetItem:
+          Type: Api
+          Properties:
+            Path: /item/{itemId}
+            Method: get
+      Environment:
+        Variables:
+          USE_LOCAL_DYNAMODB: true
+
+  DeleteItemFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: delete/
+      Handler: app.lambdaHandler
+      Runtime: nodejs12.x
+      Events:
+        GetItem:
+          Type: Api
+          Properties:
+            Path: /delete/item/
+            Method: post
+      Environment:
+        Variables:
+          USE_LOCAL_DYNAMODB: true
+
+  PutItemFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: put/
+      Handler: app.lambdaHandler
+      Runtime: nodejs12.x
+      Events:
+        GetItem:
+          Type: Api
+          Properties:
+            Path: /put/
+            Method: put
+      Environment:
+        Variables:
+          USE_LOCAL_DYNAMODB: true
+
+  UpdateItemFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: update/
+      Handler: app.lambdaHandler
+      Runtime: nodejs12.x
+      Events:
+        GetItem:
+          Type: Api
+          Properties:
+            Path: /update/
+            Method: post
+      Environment:
+        Variables:
+          USE_LOCAL_DYNAMODB: true
